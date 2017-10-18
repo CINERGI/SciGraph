@@ -1,0 +1,74 @@
+graphConfiguration:
+    location:  /var/scigraph-services/graph
+    indexedNodeProperties:
+      - label
+      - synonym
+      - fragment
+
+    exactNodeProperties:
+      - label
+      - synonym
+
+    neo4jConfig:
+      dump_configuration : true
+      dbms.pagecache.memory : 3G
+
+ontologies:
+  - url: http://hydro10.sdsc.edu/cinergi_ontology/cinergi.owl
+
+categories:
+    http://hydro10.sdsc.edu/cinergi_ontology/cinergi.owl/Agricultural_Science : Agriculture
+    http://purl.obolibrary.org/obo/ENVO_01000267 : Atmosphere
+    http://www.vocabularyserver.com/usgs/index.php?tema=100&/atmospheric-and-climatic-processes : atmospheric process
+    http://purl.obolibrary.org/obo/CHEBI_64392 : Biological material
+    http://www.vocabularyserver.com/usgs/index.php?tema=928&/life-sciences : Biology
+    http://purl.bioontology.org/ontology/MESH/D055599 : chemical process
+    http://purl.obolibrary.org/obo/CHEBI_24431 : Chemical entity
+    http://hydro10.sdsc.edu/cinergi_ontology/cinergi.owl/Chemistry : Chemistry
+    http://www.vocabularyserver.com/usgs/index.php?tema=276&/climatology : Climate science
+    http://purl.obolibrary.org/obo/IAO_0000100 : dataset
+    http://purl.obolibrary.org/obo/IAO_0000310 : Document
+    http://www.vocabularyserver.com/usgs/index.php?tema=442&/earth-sciences : Earth Science
+    http://purl.obolibrary.org/obo/ENVO_00010483 : Environmental material
+    http://www.ebi.ac.uk/efo/EFO_0002694 : Experiment
+    http://purl.obolibrary.org/obo/GAZ_00000448 : Geographic location
+    http://sweet.jpl.nasa.gov/2.3/realmGeol.owl#GeologicFeature : Geologic feature
+    http://sweet.jpl.nasa.gov/2.3/realm.owl#Geosphere : Geosphere
+    http://sweet.jpl.nasa.gov/2.3/phenCryo.owl#GlacialProcess : Glacial process
+    http://purl.obolibrary.org/obo/ENVO_00002036 : Habitat
+    http://www.vocabularyserver.com/usgs/index.php?tema=796&/hydrologic-processes : hydrologic process
+    http://sweet.jpl.nasa.gov/2.3/realm.owl#Hydrosphere : Hydrosphere
+    http://vivoweb.org/ontology/core#Meeting : Meeting
+    http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Observation : Observation
+    http://www.vocabularyserver.com/usgs/index.php?tema=1150&/ocean-processes : ocean process
+    http://vivoweb.org/ontology/core#Project : Project
+    http://hydro10.sdsc.edu/cinergi_ontology/cinergi.owl#Repository : Repository
+    http://purl.bioontology.org/ontology/MESH/D012984 : Software resource
+    http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C73537 : Specification
+    http://www.vocabularyserver.com/usgs/index.php?tema=1651&/tectonic-processes : tectonic process
+    http://purl.obolibrary.org/obo/ENVO_00000063 : Water body
+    http://semanticscience.org/resource/SIO_000140 : web service
+#    http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/Role/originator : Resource originator
+    http://www.vocabularyserver.com/usgs/index.php?tema=1458/sciences : Science Domain
+    http://purl.obolibrary.org/obo/BFO_0000015 : Process
+    http://purl.obolibrary.org/obo/BFO_0000040 : Material entity
+    http://purl.obolibrary.org/obo/RO_0001015 : Location
+#    http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#Period : Temporal Period
+    http://purl.bioontology.org/ontology/MESH/D006802 : Human activity
+#    http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#featureOfInterest : Feature of interest
+    http://hydro10.sdsc.edu/cinergi_ontology/cinergi#namedProperty : Observed Property
+    http://purl.org/NET/c4dm/event.owl#Event : Event
+    http://sweet.jpl.nasa.gov/2.3/matrInstrument.owl#Instrument : Instrument
+    http://sweet.jpl.nasa.gov/2.3/matrEquipment.owl#Equipment : Equipment
+    http://purl.obolibrary.org/obo/OBI_0000245 : Organization
+    http://purl.obolibrary.org/obo/ENVO_00000191 : Physiographic Feature
+
+mappedProperties:
+  - name: label
+    properties:
+    - http://www.w3.org/2000/01/rdf-schema#label
+    - http://www.w3.org/2004/02/skos/core#prefLabel
+    - http://www.w3.org/2004/02/skos/core#altLabel
+  - name: definition
+    properties:
+    - http://www.w3.org/2004/02/skos/core#definition

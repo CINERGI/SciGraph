@@ -1,0 +1,51 @@
+server:
+  type: simple
+  applicationContextPath: /scigraph
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 9000
+
+applicationContextPath: scigraph
+
+graphConfiguration:
+  location: /var/scigraph-services/graph
+  indexedNodeProperties:
+    - label
+    - synonym
+    - fragment
+  exactNodeProperties:
+    - label
+    - synonym
+  neo4jConfig:
+    dump_configuration : true
+    dbms.pagecache.memory : 3G
+
+cypherResources:
+    ## Get the complete CINGERI facet hierarchy
+    ## #START root = node:node_auto_index(uri='http://www.w3.org/2002/07/owl#Thing')
+    - path: /dynamic/facets
+      query: |
+              MATCH path = (facet)-[:subClassOf|equivalentClass*0..]->(root)
+              WHERE facet.`http://hydro10.sdsc.edu/cinergi_ontology/cinergiExtensions.owl#cinergiFacet` = true
+              AND root.`http://hydro10.sdsc.edu/cinergi_ontology/cinergiExtensions.owl#cinergiFacet` = true
+              RETURN path
+      operations:
+        - summary: Get all facets
+          notes:
+
+
+    ## Get parent CINERGI facets for a term
+    - path: /dynamic/{term_uri}/facets
+      query: |
+              START term = node:node_auto_index(uri={term_uri})
+              MATCH path = (term)-[:subClassOf|equivalentClass*0..]->(facet)
+              WHERE facet.`http://hydro10.sdsc.edu/cinergi_ontology/cinergiExtensions.owl#cinergiFacet` = true
+              RETURN path
+      operations:
+        - summary: Get facets related to a term
+          notes:
+          parameters:
+            - name: term_uri
+              description: The URI of the term
+
