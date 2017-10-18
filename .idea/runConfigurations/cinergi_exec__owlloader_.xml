@@ -1,0 +1,30 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="cinergi exec  owlloader " type="MavenRunConfiguration" factoryName="Maven" folderName="cinergi">
+    <MavenSettings>
+      <option name="myGeneralSettings" />
+      <option name="myRunnerSettings" />
+      <option name="myRunnerParameters">
+        <MavenRunnerParameters>
+          <option name="profiles">
+            <set />
+          </option>
+          <option name="goals">
+            <list>
+              <option value="exec:java" />
+              <option value="-DskipTests" />
+              <option value="-DskipITs" />
+              <option value="-Dexec.mainClass=io.scigraph.owlapi.loader.BatchOwlLoader" />
+              <option value="-Dexec.arguments=-c ../src/main/resources/cinergiExample.yml" />
+            </list>
+          </option>
+          <option name="profilesMap">
+            <map />
+          </option>
+          <option name="resolveToWorkspace" value="false" />
+          <option name="workingDirPath" value="$PROJECT_DIR$/SciGraph-core" />
+        </MavenRunnerParameters>
+      </option>
+    </MavenSettings>
+    <method />
+  </configuration>
+</component>
