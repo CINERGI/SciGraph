@@ -14,7 +14,7 @@
               <option value="-DskipTests" />
               <option value="-DskipITs" />
               <option value="-Dexec.mainClass=io.scigraph.services.MainApplication" />
-              <option value="-Dexec.args=server ../src/main/resources/resources/configuration.yaml" />
+              <option value="-Dexec.args=server ../src/main/resources/configuration.yml" />
             </list>
           </option>
           <option name="profilesMap">

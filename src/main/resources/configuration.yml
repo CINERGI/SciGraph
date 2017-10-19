@@ -24,28 +24,41 @@ graphConfiguration:
 cypherResources:
     ## Get the complete CINGERI facet hierarchy
     ## #START root = node:node_auto_index(uri='http://www.w3.org/2002/07/owl#Thing')
-    - path: /dynamic/facets
-      query: |
+    /dynamic/facets:
+      x-query: |
               MATCH path = (facet)-[:subClassOf|equivalentClass*0..]->(root)
               WHERE facet.`http://hydro10.sdsc.edu/cinergi_ontology/cinergiExtensions.owl#cinergiFacet` = true
               AND root.`http://hydro10.sdsc.edu/cinergi_ontology/cinergiExtensions.owl#cinergiFacet` = true
               RETURN path
-      operations:
-        - summary: Get all facets
-          notes:
+      get:
+        operationId: allFacets
+        summary: Get all facets
+        description: Get all facets
+        responses:
+          default:
+            description: success
+
 
 
     ## Get parent CINERGI facets for a term
-    - path: /dynamic/{term_uri}/facets
-      query: |
+    /dynamic/{term_uri}/facets:
+      x-query: |
               START term = node:node_auto_index(uri={term_uri})
               MATCH path = (term)-[:subClassOf|equivalentClass*0..]->(facet)
               WHERE facet.`http://hydro10.sdsc.edu/cinergi_ontology/cinergiExtensions.owl#cinergiFacet` = true
               RETURN path
-      operations:
-        - summary: Get facets related to a term
-          notes:
-          parameters:
-            - name: term_uri
-              description: The URI of the term
+      get:
+        operationId: relatedFacets
+        summary: Get facets related to a term
+        description: Get facets related to a term
+        parameters:
+          - name: term_uri
+            description: The URI of the term
+            required: true
+            type: string
+            in: query
+        responses:
+          default:
+            description: success
+
 
